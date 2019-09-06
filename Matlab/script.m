@@ -1,0 +1,15 @@
+clear;
+clc;
+VSource = 1;
+nPoints = 100;
+tEst = 1;
+type = 'log';
+instrreset;
+idOsc = 'USB0::0x0957::0x1725::MY49110441::0::INSTR';
+idGen = 'USB0::0x0957::0x0407::MY44013172::0::INSTR';
+[F, Mag, Phase] = autoBode(VSource, tEst, nPoints, type, idOsc, idGen);
+subplot(2,1,1);
+semilogx(F,Mag);
+subplot(2,1,2);
+semilogx(F,Phase);
+axis tight;
